@@ -329,13 +329,14 @@ const styles = StyleSheet.create({
   },
   item: {
     justifyContent: 'center',
+    backgroundColor: 'transparent',
   },
   title: Platform.OS === 'android'
     ? {
       flex: 1,
       alignItems: 'flex-start',
     }
-    : null,
+    : {},
   left: {
     alignItems: 'flex-start',
   },

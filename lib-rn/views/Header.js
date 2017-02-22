@@ -328,14 +328,15 @@ header:{
 flexDirection:'row'},
 
 item:{
-justifyContent:'center'},
+justifyContent:'center',
+backgroundColor:'transparent'},
 
 title:_reactNative.Platform.OS==='android'?
 {
 flex:1,
 alignItems:'flex-start'}:
 
-null,
+{},
 left:{
 alignItems:'flex-start'},
 
