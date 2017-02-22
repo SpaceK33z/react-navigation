@@ -220,7 +220,7 @@ var pointerEvents=offset!==0||isStale?'none':'box-none';
 
 
 
-var onLayoutIOS=name==='title'?
+var onLayoutIOS=_reactNative.Platform.OS==='ios'&&name==='title'?
 function(e){
 _this2.setState({
 widths:_extends({},
