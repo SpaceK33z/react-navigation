@@ -81,7 +81,7 @@ index:initialRouteIndex};
 
 }
 
-if(action.type===_NavigationActions2.default.INIT){var _action=
+if(action.type===_NavigationActions2.default.INIT){(function(){var _action=
 
 action,params=_action.params;
 if(params){
@@ -92,7 +92,7 @@ route.params,
 params)});});
 
 
-}
+}})();
 }
 
 
@@ -127,7 +127,7 @@ isBackEligible&&shouldBackNavigateToInitialRoute)
 activeTabIndex=initialRouteIndex;
 }
 var didNavigate=false;
-if(action.type===_NavigationActions2.default.NAVIGATE){
+if(action.type===_NavigationActions2.default.NAVIGATE){var _ret2=function(){
 var navigateAction=action;
 didNavigate=!!order.find(function(tabId,i){
 if(tabId===navigateAction.routeName){
@@ -144,13 +144,13 @@ null;
 if(newChildState&&newChildState!==state.routes[activeTabIndex]){
 var _routes3=[].concat(_toConsumableArray(state.routes));
 _routes3[activeTabIndex]=newChildState;
-return _extends({},
+return{v:_extends({},
 state,{
 routes:_routes3,
-index:activeTabIndex});
+index:activeTabIndex})};
 
 }
-}
+}}();if(typeof _ret2==="object")return _ret2.v;
 }
 if(action.type===_NavigationActions2.default.SET_PARAMS){
 var lastRoute=state.routes.find(
@@ -158,14 +158,14 @@ var lastRoute=state.routes.find(
 function(route){return route.key===action.key;});
 
 if(lastRoute){
-var _params=_extends({},
+var params=_extends({},
 lastRoute.params,
 action.params);
 
 var _routes4=[].concat(_toConsumableArray(state.routes));
 _routes4[state.routes.indexOf(lastRoute)]=_extends({},
 lastRoute,{
-params:_params});
+params:params});
 
 return _extends({},
 state,{

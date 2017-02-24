@@ -84,25 +84,38 @@ navigation:_this.props.childNavigationProps[route.key]}));
 
 },_this.
 
-_getLabelText=function(_ref3){var route=_ref3.route;
-var tabBar=_this.props.router.getScreenConfig(_this.props.childNavigationProps[route.key],'tabBar');
-if(tabBar&&typeof tabBar.label!=='undefined'){
-return tabBar.label;
+_getLabel=function(_ref3){var focused=_ref3.focused,route=_ref3.route,tintColor=_ref3.tintColor;
+var tabBar=_this.props.router.getScreenConfig(
+_this.props.childNavigationProps[route.key],
+'tabBar');
+
+
+if(tabBar&&tabBar.label){
+return typeof tabBar.label==='function'?
+tabBar.label({tintColor:tintColor,focused:focused}):
+tabBar.label;
 }
-var title=_this.props.router.getScreenConfig(_this.props.childNavigationProps[route.key],'title');
+
+var title=_this.props.router.getScreenConfig(
+_this.props.childNavigationProps[route.key],
+'title');
+
 if(typeof title==='string'){
 return title;
 }
+
 return route.routeName;
 },_this.
 
 _renderIcon=function(_ref4){var focused=_ref4.focused,route=_ref4.route,tintColor=_ref4.tintColor;
-var tabBar=_this.props.router.getScreenConfig(_this.props.childNavigationProps[route.key],'tabBar');
-if(tabBar&&tabBar.icon){
-return tabBar.icon({
-tintColor:tintColor,
-focused:focused});
+var tabBar=_this.props.router.getScreenConfig(
+_this.props.childNavigationProps[route.key],
+'tabBar');
 
+if(tabBar&&tabBar.icon){
+return typeof tabBar.icon==='function'?
+tabBar.icon({tintColor:tintColor,focused:focused}):
+tabBar.icon;
 }
 return null;
 },_this.
@@ -121,7 +134,7 @@ _react2.default.createElement(TabBarComponent,_extends({},
 props,
 tabBarOptions,{
 navigation:_this.props.navigation,
-getLabelText:_this._getLabelText,
+getLabel:_this._getLabel,
 renderIcon:_this._renderIcon,
 animationEnabled:animationEnabled})));
 

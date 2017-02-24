@@ -1,4 +1,4 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();exports.default=
+Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _slicedToArray=function(){function sliceIterator(arr,i){var _arr=[];var _n=true;var _d=false;var _e=undefined;try{for(var _i=arr[typeof Symbol==='function'?Symbol.iterator:'@@iterator'](),_s;!(_n=(_s=_i.next()).done);_n=true){_arr.push(_s.value);if(i&&_arr.length===i)break;}}catch(err){_d=true;_e=err;}finally{try{if(!_n&&_i["return"])_i["return"]();}finally{if(_d)throw _e;}}return _arr;}return function(arr,i){if(Array.isArray(arr)){return arr;}else if((typeof Symbol==='function'?Symbol.iterator:'@@iterator')in Object(arr)){return sliceIterator(arr,i);}else{throw new TypeError("Invalid attempt to destructure non-iterable instance");}};}();var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();exports.default=
 
 
 
@@ -28,6 +28,7 @@ createNavigationContainer;var _react=require('react');var _react2=_interopRequir
 Component,
 containerConfig)
 {
+
 
 
 
@@ -111,6 +112,20 @@ props));_this.subs=null;_this._isStateful=function(){var hasNavProp=!!_this.prop
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 _handleOpenURL=function(_ref){var url=_ref.url;
 console.log('Handling URL:',url);
 var parsedUrl=urlToPathAndParams(url);
@@ -144,7 +159,7 @@ _this.setState({nav:nav});
 return true;
 }
 return false;
-};_this.state={nav:_this._isStateful()?Component.router.getStateForAction(_NavigationActions2.default.init()):null};return _this;}_createClass(NavigationContainer,[{key:'componentDidMount',value:function componentDidMount(){var _this2=this;if(this._isStateful()){this.subs=_PlatformHelpers.BackAndroid.addEventListener('backPress',function(){return _this2.dispatch(_NavigationActions2.default.back());});_PlatformHelpers.Linking.addEventListener('url',this._handleOpenURL);_PlatformHelpers.Linking.getInitialURL().then(function(url){if(url){console.log('Handling URL:',url);var parsedUrl=urlToPathAndParams(url);if(parsedUrl){var path=parsedUrl.path,params=parsedUrl.params;var action=Component.router.getActionForPathAndParams(path,params);if(action){_this2.dispatch(action);}}}});}}},{key:'componentWillUnmount',value:function componentWillUnmount(){_PlatformHelpers.Linking.removeEventListener('url',this._handleOpenURL);this.subs&&this.subs.remove();}},{key:'render',value:function render()
+};_this.state={nav:_this._isStateful()?Component.router.getStateForAction(_NavigationActions2.default.init()):null};return _this;}_createClass(NavigationContainer,[{key:'componentDidMount',value:function componentDidMount(){var _this2=this;if(this._isStateful()){this.subs=_PlatformHelpers.BackAndroid.addEventListener('backPress',function(){return _this2.dispatch(_NavigationActions2.default.back());});_PlatformHelpers.Linking.addEventListener('url',this._handleOpenURL);_PlatformHelpers.Linking.getInitialURL().then(function(url){if(url){console.log('Handling URL:',url);var parsedUrl=urlToPathAndParams(url);if(parsedUrl){var path=parsedUrl.path,params=parsedUrl.params;var action=Component.router.getActionForPathAndParams(path,params);if(action){_this2.dispatch(action);}}}});}}},{key:'componentDidUpdate',value:function componentDidUpdate(prevProps,prevState){var _ref2=this._isStateful()?[prevState.nav,this.state.nav]:[prevProps.navigation.state,this.props.navigation.state],_ref3=_slicedToArray(_ref2,2),prevNavigationState=_ref3[0],navigationState=_ref3[1];if(prevNavigationState!==navigationState&&typeof this.props.onNavigationStateChange==='function'){this.props.onNavigationStateChange(prevNavigationState,navigationState);}}},{key:'componentWillUnmount',value:function componentWillUnmount(){_PlatformHelpers.Linking.removeEventListener('url',this._handleOpenURL);this.subs&&this.subs.remove();}},{key:'render',value:function render()
 
 
 

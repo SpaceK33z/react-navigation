@@ -75,7 +75,8 @@ var color=position.interpolate({
 inputRange:inputRange,
 outputRange:outputRange});
 
-var label=_this.props.getLabelText(scene);
+
+var label=_this.props.getLabel(scene);
 if(typeof label==='string'){
 return(
 _react2.default.createElement(_reactNative.Animated.Text,{style:[styles.label,{color:color},labelStyle]},

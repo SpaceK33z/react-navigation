@@ -35,7 +35,6 @@ var _withCachedChildNavigation=require('../../withCachedChildNavigation');var _w
 
 
 
-
 DrawerSidebar=function(_PureComponent){_inherits(DrawerSidebar,_PureComponent);function DrawerSidebar(){var _ref;var _temp,_this,_ret;_classCallCheck(this,DrawerSidebar);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=_possibleConstructorReturn(this,(_ref=DrawerSidebar.__proto__||Object.getPrototypeOf(DrawerSidebar)).call.apply(_ref,[this].concat(args))),_this),_this.
 
 
@@ -47,10 +46,12 @@ configName);
 
 },_this.
 
-_getLabelText=function(_ref2){var route=_ref2.route;
+_getLabel=function(_ref2){var focused=_ref2.focused,tintColor=_ref2.tintColor,route=_ref2.route;
 var drawer=_this._getScreenConfig(route.key,'drawer');
-if(drawer&&typeof drawer.label==='string'){
-return drawer.label;
+if(drawer&&drawer.label){
+return typeof drawer.label==='function'?
+drawer.label({tintColor:tintColor,focused:focused}):
+drawer.label;
 }
 
 var title=_this._getScreenConfig(route.key,'title');
@@ -64,10 +65,9 @@ return route.routeName;
 _renderIcon=function(_ref3){var focused=_ref3.focused,tintColor=_ref3.tintColor,route=_ref3.route;
 var drawer=_this._getScreenConfig(route.key,'drawer');
 if(drawer&&drawer.icon){
-return drawer.icon({
-tintColor:tintColor,
-focused:focused});
-
+return typeof drawer.icon==='function'?
+drawer.icon({tintColor:tintColor,focused:focused}):
+drawer.icon;
 }
 return null;
 },_temp),_possibleConstructorReturn(_this,_ret);}_createClass(DrawerSidebar,[{key:'render',value:function render()
@@ -79,7 +79,7 @@ _react2.default.createElement(_reactNative.View,{style:[styles.container,this.pr
 _react2.default.createElement(ContentComponent,_extends({},
 this.props.contentOptions,{
 navigation:this.props.navigation,
-getLabelText:this._getLabelText,
+getLabel:this._getLabel,
 renderIcon:this._renderIcon}))));
 
 

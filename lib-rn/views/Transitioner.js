@@ -171,27 +171,25 @@ transitionUserSpec);var
 timing=transitionSpec.timing;
 delete transitionSpec.timing;
 
-var animations=[
+var animations=indexHasChanged?
+[
 timing(
 progress,_extends({},
 
 transitionSpec,{
-toValue:1}))];
+toValue:1})),
 
 
-
-
-if(indexHasChanged){
-animations.push(
 timing(
 position,_extends({},
 
 transitionSpec,{
-toValue:nextProps.navigation.state.index})));
+toValue:nextProps.navigation.state.index}))]:
 
 
 
-}
+[];
+
 
 this._isTransitionRunning=true;
 this.setState(nextState,function(){
